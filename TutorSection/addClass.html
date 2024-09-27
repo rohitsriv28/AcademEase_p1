@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="addClass.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+        doc,
+        setDoc,
+        deleteDoc,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyA4fg_x-GFnD5TTsDJhdcgPzkiClfnpLh4",
+        authDomain: "project1-1a12a.firebaseapp.com",
+        databaseURL: "https://project1-1a12a-default-rtdb.firebaseio.com",
+        projectId: "project1-1a12a",
+        storageBucket: "project1-1a12a.appspot.com",
+        messagingSenderId: "503658861390",
+        appId: "1:503658861390:web:0ca201b7574cc71004041f",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const firestore = getFirestore(app);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,235 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AcademEase</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="side-nav">
+        <div class="user" id="user-info">
+          <i class="fa-solid fa-user"></i>
+          <div>
+            <p id="user-name">Mandip</p>
+            <p id="user-email"></p>
+          </div>
+        </div>
+        <ul>
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-house"></i>
+              <p>DashBoard</p>
+            </a>
+          </li>
+          <li class="student roleType">
+            <a href="../StudentSection/tutorList/tutorList.html">
+              <i class="fa-solid fa-swatchbook"></i>
+              <p>Book Class</p>
+            </a>
+          </li>
+          <li class="student roleType">
+            <a href="../StudentSection/MyClasses/index.html">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <p>My Classes</p>
+            </a>
+          </li>
+          <li class="teacher roleType">
+            <a href="../TutorSection/myC.html">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <p>My Classes</p>
+            </a>
+          </li>
+          <li class="teacher roleType">
+            <a href="../TutorSection/manage_subjects.html">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <p>Manage classes</p>
+            </a>
+          </li>
+          <li class="admin roleType">
+            <a href="../Admin/createTeach/create.html">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <p>Register Teacher</p>
+            </a>
+          </li>
+
+          <li class="admin roleType">
+            <a href="../Admin/approve.html">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <p>Approve Classes</p>
+            </a>
+          </li>
+
+          <li class="admin roleType">
+            <a href="../Admin/delete.html">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <p>Delete Classes</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="../common/profile.html" target="_blank">
+              <i class="fa-solid fa-address-card"></i>
+              <p>Account</p>
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li onclick="fnLogout()">
+            <a href="../Login/login.html">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script type="module" src="./dashboard.js"></script>
+    <script>
+      function fnLogout() {
+        localStorage.clear();
+        alert("logout");
+      }
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AcademEase</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="side-nav">
+        <div class="user" id="user-info">
+          <i class="fa-solid fa-user"></i>
+          <div>
+            <p id="user-name">Mandip</p>
+            <p id="user-email"></p>
+          </div>
+        </div>
+        <ul>
+          <li>
+            <a href="#">
+              <i class="fa-solid fa-house"></i>
+              <p>DashBoard</p>
+            </a>
+          </li>
+          <li class="student roleType">
+            <a href="../StudentSection/tutorList/tutorList.html">
+              <i class="fa-solid fa-swatchbook"></i>
+              <p>Book Class</p>
+            </a>
+          </li>
+          <li class="student roleType">
+            <a href="../StudentSection/MyClasses/index.html">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <p>My Classes</p>
+            </a>
+          </li>
+          <li class="teacher roleType">
+            <a href="../TutorSection/myC.html">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <p>My Classes</p>
+            </a>
+          </li>
+          <li class="teacher roleType">
+            <a href="../TutorSection/manage_subjects.html">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <p>Manage classes</p>
+            </a>
+          </li>
+          <li class="admin roleType">
+            <a href="../Admin/createTeach/create.html">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <p>Register Teacher</p>
+            </a>
+          </li>
+
+          <li class="admin roleType">
+            <a href="../Admin/approve.html">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <p>Approved Teachers</p>
+            </a>
+          </li>
+
+          <li class="admin roleType">
+            <a href="../Admin/delete.html">
+              <i class="fa-solid fa-book-open-reader"></i>
+              <p>Delete Teachers</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="../common/profile.html" target="_blank">
+              <i class="fa-solid fa-address-card"></i>
+              <p>Account</p>
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li onclick="fnLogout()">
+            <a href="../Login/login.html">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <main class="content">
+        <section>
+          <h1>Welcome to AcademEase</h1>
+          <p>
+            At AcademEase, we believe that every student deserves access to
+            quality education, regardless of geographical barriers or scheduling
+            conflicts. Our innovative online platform connects students with
+            knowledgeable and experienced tutors, providing personalized
+            academic support tailored to individual learning needs.
+          </p>
+        </section>
+        <section>
+          <h2>Our Mission</h2>
+          <p>
+            AcademEase aims to transform the traditional tutoring landscape by
+            offering a centralized, user-friendly platform that facilitates
+            seamless interactions between students and tutors. Our mission is to
+            enhance academic proficiency through easy access to expert tutors
+            and efficient management of tutoring sessions.
+          </p>
+        </section>
+        <section>
+          <h2>Join Our Learning Community</h2>
+          <p>
+            At AcademEase, we are committed to fostering a vibrant learning
+            community where students and tutors can collaborate and share
+            knowledge. Whether you are a student looking for extra help or a
+            tutor wanting to share your expertise, AcademEase is the perfect
+            platform for you.
+          </p>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./dashboard.js"></script>
+    <script>
+      function fnLogout() {
+        localStorage.clear();
+        alert("logout");
+      }
+    </script>
+  </body>
+</html>

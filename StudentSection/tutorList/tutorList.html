@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher List</title>
+    <style>
+      #teacherList {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .teacher-card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        display: block;
+      }
+
+      .teacher-image {
+        width: 50%;
+        height: auto;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Teacher List</h2>
+
+    <label for="subjectFilter">Search:</label>
+    <input type="text" id="subjectFilter" oninput="filterTeachers()" value="" />
+
+    <div id="teacherList"></div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyA4fg_x-GFnD5TTsDJhdcgPzkiClfnpLh4",
+        authDomain: "project1-1a12a.firebaseapp.com",
+        databaseURL: "https://project1-1a12a-default-rtdb.firebaseio.com",
+        projectId: "project1-1a12a",
+        storageBucket: "project1-1a12a.appspot.com",
+        messagingSenderId: "503658861390",
+        appId: "1:503658861390:web:0ca201b7574cc71004041f",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const firestore = getFirestore(app);
+
+      async function fetchTeachers() {
+        const teacherCollectionRef = collection(firestore, "teachers");
+
+        try {
+          const querySnapshot = await getDocs(teacherCollectionRef);
+
+          querySnapshot.forEach((doc) => {
+            const teacherData = doc.data();
+            teacherData.id = doc.id;
+            console.log(teacherData);
+            displayTeacher(teacherData);
+          });
+        } catch (error) {
+          console.error("Error fetching teachers:", error);
+        }
+      }
+
+      function displayTeacher(teacherData) {
+        const teacherList = document.getElementById("teacherList");
+        if (teacherData.subjects && Array.isArray(teacherData.subjects)) {
+          teacherData.subjects.forEach((subject) => {
+            const card = document.createElement("div");
+            card.classList.add("teacher-card");
+            card.innerHTML = `
+                <img src="${teacherData.picture}" alt="Teacher Image" class="teacher-image"/>
+                <p>Name: ${teacherData.name}</p>
+                <p>Email: ${teacherData.email}</p>
+                <p class="subject">Subject: ${subject.subject}</p>
+                <p>Description: ${subject.description}</p>
+            `;
+
+            card.addEventListener("click", () => {
+              window.location.href = `tutorDetails.html?teacherId=${teacherData.id}&subjectId=${subject.id}&subjectName=${subject.subject}`;
+            });
+
+            teacherList.appendChild(card);
+          });
+        }
+      }
+
+      fetchTeachers();
+    </script>
+    <script>
+      function filterTeachers() {
+        const subjectFilter = document.getElementById("subjectFilter");
+        const selectedSubject = subjectFilter.value.toLowerCase();
+        const teacherCards = document.querySelectorAll(".teacher-card");
+
+        teacherCards.forEach((card) => {
+          const subjects = card.querySelectorAll(".subject");
+          let subjectFound = false;
+
+          subjects.forEach((subject) => {
+            const subjectText = subject.innerText.split(": ")[1].toLowerCase();
+            if (
+              selectedSubject === "all" ||
+              subjectText.includes(selectedSubject)
+            ) {
+              subjectFound = true;
+            }
+          });
+
+          if (subjectFound) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="../../Signup/signup.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <form class="signup-form" id="signupForm">
+        <h2>Cretae Teacher</h2>
+        <input type="text" placeholder="Name" required id="name" />
+        <input type="text" placeholder="Username" required id="username" />
+        <input type="email" placeholder="Email" required id="signupEmail" />
+
+        <input
+          type="text"
+          name="role"
+          id="role"
+          value="teacher"
+          readonly
+          onload="toggleTeacherOptions()"
+          hidden
+        />
+
+        <div id="teacherOptions">
+          <input type="file" accept="image/*" id="teacherPicture" />
+          <input type="text" placeholder="Degree" id="teacherDegree" />
+          <input type="text" placeholder="Experience" id="teacherExperience" />
+          <div id="subjectFields">
+            <div class="subjectInputWrapper">
+              <input type="text" placeholder="Subject 1" class="subjectInput" />
+              <input
+                type="text"
+                placeholder="Description"
+                class="descriptionInput"
+              />
+            </div>
+          </div>
+          <button type="button" onclick="addSubjectInput()">+</button>
+        </div>
+
+        <div id="passGroup">
+          <div class="pass">
+            <input
+              type="password"
+              placeholder="Password"
+              required
+              id="signupPassword"
+            />
+          </div>
+          <div class="confirmPass">
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              required
+              id="confirmPass"
+            />
+          </div>
+        </div>
+        <button type="submit" id="signup">Create</button>
+      </form>
+    </div>
+    <script src="./create.js" type="module"></script>
+    <script>
+      function toggleTeacherOptions() {
+        const roleSelect = document.getElementById("role");
+        const teacherOptions = document.getElementById("teacherOptions");
+
+        if (roleSelect.value === "teacher") {
+          teacherOptions.style.display = "block";
+        } else {
+          teacherOptions.style.display = "none";
+        }
+      }
+
+      let subjectCount = 1;
+
+      function addSubjectInput() {
+        subjectCount++;
+        const subjectFields = document.getElementById("subjectFields");
+        const inputWrapper = document.createElement("div");
+        inputWrapper.classList.add("subjectInputWrapper");
+        inputWrapper.innerHTML = `
+          <input type="text" placeholder="Subject ${subjectCount}" class="subjectInput" />
+          <input type="text" placeholder="Description" class="descriptionInput" />
+        `;
+        subjectFields.appendChild(inputWrapper);
+      }
+    </script>
+  </body>
+</html>

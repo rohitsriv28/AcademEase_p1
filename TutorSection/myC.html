@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Class Details</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <h2 class="my-4">Teacher Class Details</h2>
+      <div id="classDetails"></div>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        doc,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyA4fg_x-GFnD5TTsDJhdcgPzkiClfnpLh4",
+        authDomain: "project1-1a12a.firebaseapp.com",
+        databaseURL: "https://project1-1a12a-default-rtdb.firebaseio.com",
+        projectId: "project1-1a12a",
+        storageBucket: "project1-1a12a.appspot.com",
+        messagingSenderId: "503658861390",
+        appId: "1:503658861390:web:0ca201b7574cc71004041f",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const firestore = getFirestore(app);
+
+      async function fetchTeacherClassDetails() {
+        const classDetailsDiv = document.getElementById("classDetails");
+        classDetailsDiv.innerHTML = "";
+
+        try {
+          const userId = localStorage.getItem("uid");
+          if (!userId) {
+            throw new Error("User ID not found in localStorage.");
+          }
+          const teacherClassCollectionRef = collection(
+            firestore,
+            "teacherClass"
+          );
+          const teach = doc(teacherClassCollectionRef, userId);
+          const xxx = await getDoc(teach);
+          if (xxx.exists()) {
+            const data = xxx.data();
+            const selectedTimes = data.selectedTimes || [];
+            if (selectedTimes.length > 0) {
+              selectedTimes.forEach(async (timeObj) => {
+                const time = Object.keys(timeObj)[0];
+                const classData = timeObj[time];
+                const studentDocRef = doc(
+                  firestore,
+                  "students",
+                  classData.studentId
+                );
+                const studentDocSnapshot = await getDoc(studentDocRef);
+                const studentData = studentDocSnapshot.data();
+                const teacherDocRef = doc(firestore, "teachers", userId);
+                const teacherDocSnapshot = await getDoc(teacherDocRef);
+                const teacherData = teacherDocSnapshot.data();
+                const selectedSubject = teacherData.subjects.find(
+                  (sub) => sub.id == classData.subjectId
+                );
+                const card = `
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        Time: ${time}
+                                    </div>
+                                    <div class="card-body">
+                                        <p><strong>Student Name:</strong> ${studentData.name}</p>
+                                        <p><strong>Student Email:</strong> ${studentData.email}</p>
+                                        <p><strong>Subject:</strong> ${selectedSubject.subject}</p>
+                                        <p><strong>Subject Description:</strong> ${selectedSubject.description}</p>
+                                        <p><strong>Selected Date:</strong> ${classData.selectedDate}</p>
+                                    </div>
+                                </div>
+                            `;
+                classDetailsDiv.innerHTML += card;
+              });
+            } else {
+              classDetailsDiv.innerHTML = "<p>No class details found.</p>";
+            }
+          } else {
+            classDetailsDiv.innerHTML = "<p>No class details found.</p>";
+          }
+        } catch (error) {
+          console.error("Error fetching teacher class details:", error);
+          classDetailsDiv.innerHTML = `<p>Error fetching teacher class details: ${error.message}</p>`;
+        }
+      }
+
+      fetchTeacherClassDetails();
+    </script>
+  </body>
+</html>

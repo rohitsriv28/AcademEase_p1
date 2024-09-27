@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Comic Sans MS", sans-serif;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: url(../erik-mclean-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 80%;
+  max-width: 800px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2rem;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+button,
+select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  width: 48%;
+  height: 50px;
+}
+
+input[type="email"] {
+  width: 100%;
+}
+
+.error {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 5px;
+  display: block;
+}
+
+button {
+  width: calc(50% - 5px);
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  height: 50px;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+  margin-top: 20px;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+#role {
+  width: 100%;
+  height: 50px;
+}
+
+#teacherOptions {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+input[type="file"] {
+  width: 100%;
+  height: 50px;
+}
+
+.subjectInputWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.subjectInputWrapper input {
+  width: 48%;
+}
+
+.add-subject {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.add-subject:hover {
+  background-color: #218838;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  select {
+    width: 100%;
+  }
+
+  .subjectInputWrapper {
+    flex-direction: column;
+  }
+
+  .subjectInputWrapper input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .add-subject {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}

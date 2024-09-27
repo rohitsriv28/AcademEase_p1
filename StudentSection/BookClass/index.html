@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Teacher List</title>
+  </head>
+
+  <body>
+    <h2>Teacher List</h2>
+
+    <label for="subjectSearch">Search Teachers:</label>
+    <input
+      type="text"
+      id="subjectSearch"
+      oninput="filterTeachers()"
+      placeholder="Type a subject..."
+    />
+
+    <div id="teacherList"></div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyA4fg_x-GFnD5TTsDJhdcgPzkiClfnpLh4",
+        authDomain: "project1-1a12a.firebaseapp.com",
+        databaseURL: "https://project1-1a12a-default-rtdb.firebaseio.com",
+        projectId: "project1-1a12a",
+        storageBucket: "project1-1a12a.appspot.com",
+        messagingSenderId: "503658861390",
+        appId: "1:503658861390:web:0ca201b7574cc71004041f",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const firestore = getFirestore(app);
+
+      async function fetchTeachers() {
+        const teacherCollectionRef = collection(firestore, "teachers");
+
+        try {
+          const querySnapshot = await getDocs(teacherCollectionRef);
+
+          querySnapshot.forEach((doc) => {
+            const teacherData = doc.data();
+            teacherData.id = doc.id;
+            displayTeacher(teacherData);
+          });
+        } catch (error) {
+          console.error("Error fetching teachers:", error);
+        }
+      }
+
+      function displayTeacher(teacherData) {
+        const teacherList = document.getElementById("teacherList");
+        const card = document.createElement("div");
+        card.classList.add("teacher-card");
+
+        card.innerHTML = `
+        <img src="${teacherData.picture}" alt="Teacher Image" class="teacher-image"/>
+        <p>Name: ${teacherData.name}</p>
+        <p>Email: ${teacherData.email}</p>
+        <p class="subject">Subject: ${teacherData.subject}</p>
+    `;
+
+        card.addEventListener("click", () => {
+          window.location.href = `../tutorList/tutorDetails.html?id=${teacherData.id}`;
+        });
+
+        teacherList.appendChild(card);
+      }
+
+      fetchTeachers();
+    </script>
+    <script>
+      function filterTeachers() {
+        const subjectSearch = document.getElementById("subjectSearch");
+        const searchTerm = subjectSearch.value.trim().toLowerCase();
+        const teacherCards = document.querySelectorAll(".teacher-card");
+        let foundSubjects = false;
+
+        teacherCards.forEach((card) => {
+          const subject = card
+            .querySelector(".subject")
+            .innerText.split(": ")[1]
+            .toLowerCase();
+
+          const teacherName = card
+            .querySelector("p:nth-child(2)")
+            .innerText.toLowerCase();
+
+          if (
+            searchTerm === "" ||
+            subject.includes(searchTerm) ||
+            teacherName.includes(searchTerm)
+          ) {
+            card.style.display = "block";
+            foundSubjects = true;
+          } else {
+            card.style.display = "none";
+          }
+        });
+
+        const noSubjectsMessage = document.getElementById("noSubjectsMessage");
+
+        if (!foundSubjects) {
+          if (!noSubjectsMessage) {
+            const message = document.createElement("p");
+            message.id = "noSubjectsMessage";
+            message.textContent = "No subjects available.";
+            document.getElementById("teacherList").appendChild(message);
+          }
+        } else {
+          if (noSubjectsMessage) {
+            noSubjectsMessage.remove();
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

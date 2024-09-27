@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="details.css" />
+    <title>Teacher Details</title>
+  </head>
+
+  <body>
+    <h2>Teacher Details</h2>
+
+    <div id="detailsContainer"></div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+      import {
+        getFirestore,
+        doc,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyA4fg_x-GFnD5TTsDJhdcgPzkiClfnpLh4",
+        authDomain: "project1-1a12a.firebaseapp.com",
+        databaseURL: "https://project1-1a12a-default-rtdb.firebaseio.com",
+        projectId: "project1-1a12a",
+        storageBucket: "project1-1a12a.appspot.com",
+        messagingSenderId: "503658861390",
+        appId: "1:503658861390:web:0ca201b7574cc71004041f",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const firestore = getFirestore(app);
+
+      async function fetchTeacherDetails() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const docId = urlParams.get("id");
+
+        if (!docId) {
+          console.error("No document ID provided in the URL.");
+          return;
+        }
+
+        const teacherDocRef = doc(firestore, "approve_Teacher", docId);
+
+        try {
+          const teacherDoc = await getDoc(teacherDocRef);
+
+          if (teacherDoc.exists()) {
+            const teacherData = teacherDoc.data();
+
+            const detailsContainer =
+              document.getElementById("detailsContainer");
+            detailsContainer.innerHTML = `<p>Email: ${teacherData.email}</p>
+                                         <p>Name: ${teacherData.name}</p>
+                                         <img src="${teacherData.picture}" alt="Teacher Image"/>`;
+          } else {
+            console.error("Teacher document not found.");
+          }
+        } catch (error) {
+          console.error("Error fetching document:", error);
+        }
+      }
+
+      fetchTeacherDetails();
+    </script>
+  </body>
+</html>
