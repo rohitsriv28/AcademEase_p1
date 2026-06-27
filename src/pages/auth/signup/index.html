@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - AcademEase</title>
+    <link rel="stylesheet" href="/src/pages/auth/signup/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Create Account</h2>
+      <p class="subtitle">Join AcademEase today as a Student or Teacher.</p>
+      
+      <form id="signupForm">
+        <!-- Name & Username Row -->
+        <div class="form-row">
+          <div class="input-block">
+            <label for="signupName">Full Name</label>
+            <input type="text" placeholder="John Doe" required id="signupName" />
+          </div>
+          <div class="input-block">
+            <label for="signupUsername">Username</label>
+            <input type="text" placeholder="johndoe1" required id="signupUsername" />
+          </div>
+        </div>
+        
+        <!-- Email Input Group -->
+        <div class="form-group-full">
+          <label for="signupEmail">Email Address</label>
+          <input type="email" placeholder="john@example.com" required id="signupEmail" class="full-width" />
+        </div>
+        
+        <!-- Role Selection -->
+        <div class="form-group-full">
+          <label for="roleSelect">Account Type / Role</label>
+          <select id="roleSelect" required class="full-width">
+            <option value="student">Student (Book Classes)</option>
+            <option value="teacher">Teacher (Offer Tutoring)</option>
+          </select>
+        </div>
+        
+        <!-- Dynamic Teacher Options -->
+        <div id="teacherOptions" style="display: none">
+          <h3>Professional Profile</h3>
+          
+          <label for="teacherPicture">Profile Photo</label>
+          <input type="file" accept="image/*" id="teacherPicture" />
+          
+          <div class="form-row">
+            <div class="input-block">
+              <label for="teacherDegree">Highest Degree</label>
+              <input type="text" placeholder="B.Sc. Computer Science" id="teacherDegree" />
+            </div>
+            <div class="input-block">
+              <label for="teacherExperience">Experience (Years)</label>
+              <input type="text" placeholder="e.g. 5 Years" id="teacherExperience" />
+            </div>
+          </div>
+          
+          <label>Subjects You Offer</label>
+          <div id="subjectFields">
+            <div class="subjectInputWrapper">
+              <input type="text" placeholder="Subject Name (e.g. Algebra)" class="subjectInput" />
+              <input type="text" placeholder="Description (e.g. High school level)" class="descriptionInput" />
+            </div>
+          </div>
+          <button type="button" class="add-subject" id="addSubjectBtn" title="Add Subject">+</button>
+        </div>
+        
+        <!-- Passwords Row -->
+        <div class="form-row">
+          <div class="input-block">
+            <label for="signupPassword">Password</label>
+            <input type="password" placeholder="••••••••" required id="signupPassword" />
+          </div>
+          <div class="input-block">
+            <label for="confirmPass">Confirm Password</label>
+            <input type="password" placeholder="••••••••" required id="confirmPass" />
+          </div>
+        </div>
+        
+        <button type="submit" id="signupBtn">Sign Up</button>
+      </form>
+      
+      <a href="/src/pages/auth/login/index.html" class="login-link">Already a member? Login Now!</a>
+    </div>
+    <script src="/src/pages/auth/signup/index.js" type="module"></script>
+  </body>
+</html>

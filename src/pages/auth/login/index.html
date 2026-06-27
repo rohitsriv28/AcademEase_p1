@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In - AcademEase</title>
+    <link rel="stylesheet" href="/src/pages/auth/login/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Please enter your credentials to log in.</p>
+      
+      <form id="loginForm">
+        <div class="input-group">
+          <label for="loginEmail">Email Address</label>
+          <input
+            type="email"
+            placeholder="name@example.com"
+            required
+            id="loginEmail"
+          />
+        </div>
+        <div class="input-group">
+          <label for="loginPassword">Password</label>
+          <input
+            type="password"
+            placeholder="••••••••"
+            required
+            id="loginPassword"
+          />
+        </div>
+        <button type="submit" id="loginBtn">Log In</button>
+      </form>
+      
+      <a href="/src/pages/auth/signup/index.html" class="signup-link">Not a member yet? Register Now!</a>
+    </div>
+    <script type="module" src="/src/pages/auth/login/index.js"></script>
+  </body>
+</html>

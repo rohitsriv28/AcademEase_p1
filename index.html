@@ -1,82 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AcademEase | Find Your Perfect Tutor</title>
-  <link rel="stylesheet" href="landing.css" />
-  <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AcademEase - Find Your Perfect Tutor</title>
+  <link rel="stylesheet" href="/src/assets/css/landing.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
-
 <body>
 
-  <!-- Navbar -->
+  <!-- Header / Navigation -->
   <nav class="navbar">
-    <a href="#" class="logo">Academ<span>Ease</span></a>
+    <a href="/index.html" class="logo">
+      <i class="fa-solid fa-graduation-cap"></i> AcademEase
+    </a>
     <div class="nav-links">
-      <a href="./Login/login.html" class="btn-secondary">Login</a>
-      <a href="./Signup/signup.html" class="btn-primary">Sign Up</a>
+      <a href="/src/pages/auth/login/index.html" class="btn-nav btn-login">Log In</a>
+      <a href="/src/pages/auth/signup/index.html" class="btn-nav btn-signup">Sign Up</a>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-content">
-      <h1>Unlock Your Potential with <br> <span>Expert Tutors</span></h1>
-      <p>
-        Connect with experienced educators effortlessly. Streamline your learning journey with seamless class bookings
-        and personalized mentorship.
-      </p>
-      <div class="hero-btns">
-        <a href="./Signup/signup.html" class="btn-primary">Get Started</a>
-        <a href="#features" class="btn-secondary">Learn More</a>
+    <div class="hero-tag">Smart Education Platform</div>
+    <h1>Elevate Your Academic Potential with Ease</h1>
+    <p>Find and book expert classes from top certified educators, or apply to teach and manage your class schedule with our seamless dashboard.</p>
+    <div class="hero-ctas">
+      <a href="/src/pages/auth/signup/index.html" class="btn-hero btn-student">Join as Student</a>
+      <a href="/src/pages/auth/signup/index.html" class="btn-hero btn-teacher">Become a Tutor</a>
+    </div>
+
+    <!-- Platform Stats Container -->
+    <div class="stats-container">
+      <div class="stat-item">
+        <h3>50<span>+</span></h3>
+        <p>Expert Subjects</p>
+      </div>
+      <div class="stat-item" style="border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color);">
+        <h3>100<span>+</span></h3>
+        <p>Happy Students</p>
+      </div>
+      <div class="stat-item">
+        <h3>98<span>%</span></h3>
+        <p>Satisfaction Rate</p>
       </div>
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="features" id="features">
-    <h2 class="section-title">Why Choose AcademEase?</h2>
+  <!-- Features Grid -->
+  <section class="features-section">
+    <div class="section-header">
+      <h2>Explore AcademEase Features</h2>
+      <p>A complete educational platform designed for both ambitious students and professional educators.</p>
+    </div>
     <div class="features-grid">
       <div class="feature-card">
-        <i class="fa-solid fa-user-graduate feature-icon"></i>
-        <h3>Expert Tutors</h3>
-        <p>Browse through a diverse pool of qualified and verified tutors ready to help you excel in your studies.</p>
+        <i class="fa-solid fa-user-tie"></i>
+        <h3>Certified Educators</h3>
+        <p>Browse detailed portfolios containing experience, degrees, and student reviews to select your ideal tutor.</p>
       </div>
       <div class="feature-card">
-        <i class="fa-solid fa-calendar-check feature-icon"></i>
-        <h3>Easy Scheduling</h3>
-        <p>Book classes at your convenience with our intuitive scheduling system. Missed a class? No problem, easy
-          resizing.</p>
+        <i class="fa-solid fa-calendar-check"></i>
+        <h3>Instant Bookings</h3>
+        <p>Book demo or regular sessions, manage schedules, and reschedule directly from your dashboard.</p>
       </div>
       <div class="feature-card">
-        <i class="fa-solid fa-chart-line feature-icon"></i>
-        <h3>Track Progress</h3>
-        <p>Monitor your academic growth and stay on top of your goals with our integrated dashboard tools.</p>
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Tutor Dashboard</h3>
+        <p>Certified teachers can manage their subjects, approve classes, track upcoming schedules, and manage students.</p>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; <span id="current-year"></span> AcademEase. All rights reserved.</p>
+    <p>&copy; 2026 AcademEase. Built using pure JavaScript, CSS, and Firebase. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript to update the year range -->
-  <script>
-    const currentYear = new Date().getFullYear();
-    const startYear = 2024;
-    const yearDisplay = document.getElementById('current-year');
-
-    if (currentYear > startYear) {
-      yearDisplay.textContent = `${startYear} - ${currentYear}`;
-    } else {
-      yearDisplay.textContent = startYear;
-    }
-  </script>
-
 </body>
-
 </html>

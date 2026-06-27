@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Teacher Approvals</title>
+  <link rel="stylesheet" href="/src/assets/css/dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+  <div id="sidebar-container"></div>
+  <main class="content">
+    <div class="dashboard-card">
+      <h2>Pending Teacher Approvals</h2>
+      <div id="approvalsListContainer">
+         <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Degree / Exp</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="approvalsTableBody">
+                <!-- Dynamically filled -->
+            </tbody>
+         </table>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="/src/pages/admin/approvals/index.js"></script>
+</body>
+</html>

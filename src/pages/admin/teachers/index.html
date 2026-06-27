@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Teachers</title>
+  <link rel="stylesheet" href="/src/assets/css/dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+      .tutor-form-row {
+          display: flex; gap: 12px; margin-bottom: 12px;
+      }
+      .tutor-form-row .input-wrapper {
+          flex: 1;
+      }
+      .subject-item {
+          background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: var(--radius-sm); margin-bottom: 8px;
+          display: flex; flex-direction: column; gap: 6px;
+      }
+  </style>
+</head>
+<body>
+  <div id="sidebar-container"></div>
+  <main class="content">
+    <div class="dashboard-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+          <h2>Manage Active Teachers</h2>
+          <button class="btn btn-primary" id="openAddTeacherBtn">
+              <i class="fa-solid fa-user-plus"></i> Add Teacher
+          </button>
+      </div>
+      <div id="teachersListContainer">
+         <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Degree / Experience</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="teachersTableBody">
+                <!-- Dynamically filled -->
+            </tbody>
+         </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add/Edit Teacher Modal -->
+  <div class="modal-overlay" id="teacherModal">
+      <div class="modal-box" style="width: 520px;">
+          <h3 id="modalTitle">Add Teacher</h3>
+          <p style="color:#64748b; font-size:13px; margin-bottom:15px;">Complete the form below to save teacher details.</p>
+          <input type="hidden" id="teacherIdHidden" />
+          
+          <div class="tutor-form-row">
+              <div class="input-wrapper">
+                  <label for="teacherNameInput">Name</label>
+                  <input type="text" id="teacherNameInput" placeholder="Full Name" required />
+              </div>
+              <div class="input-wrapper">
+                  <label for="teacherUsernameInput">Username</label>
+                  <input type="text" id="teacherUsernameInput" placeholder="username" required />
+              </div>
+          </div>
+
+          <div class="tutor-form-row">
+              <div class="input-wrapper">
+                  <label for="teacherEmailInput">Email</label>
+                  <input type="email" id="teacherEmailInput" placeholder="email@domain.com" required />
+              </div>
+              <div class="input-wrapper" id="passwordFieldContainer">
+                  <label for="teacherPasswordInput">Password</label>
+                  <input type="password" id="teacherPasswordInput" placeholder="Password" />
+              </div>
+          </div>
+
+          <div class="tutor-form-row">
+              <div class="input-wrapper">
+                  <label for="teacherDegreeInput">Degree</label>
+                  <input type="text" id="teacherDegreeInput" placeholder="e.g. Master in Science" />
+              </div>
+              <div class="input-wrapper">
+                  <label for="teacherExperienceInput">Experience</label>
+                  <input type="text" id="teacherExperienceInput" placeholder="e.g. 5 Years" />
+              </div>
+          </div>
+
+          <label for="teacherPictureInput">Profile Image</label>
+          <input type="file" id="teacherPictureInput" accept="image/*" style="padding: 6px 12px; margin-bottom: 15px;" />
+          
+          <div style="border-top:1px solid #e2e8f0; padding-top:15px; margin-top:15px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                  <label style="margin:0; font-size:14px; font-weight:700;">Subjects Taught</label>
+                  <button type="button" class="btn btn-secondary" id="addSubjectRowBtn" style="padding: 4px 10px; font-size:12px;">
+                      <i class="fa-solid fa-plus"></i> Add
+                  </button>
+              </div>
+              <div id="modalSubjectFields">
+                  <!-- Dynamic fields inserted here -->
+              </div>
+          </div>
+
+          <div class="modal-actions">
+              <button class="btn btn-secondary" id="closeModalBtn">Cancel</button>
+              <button class="btn btn-primary" id="saveTeacherBtn">Save Teacher</button>
+          </div>
+      </div>
+  </div>
+
+  <script type="module" src="/src/pages/admin/teachers/index.js"></script>
+</body>
+</html>

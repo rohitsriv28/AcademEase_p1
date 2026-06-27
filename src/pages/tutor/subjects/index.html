@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Subjects</title>
+  <link rel="stylesheet" href="/src/assets/css/dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+      .modal-overlay {
+          position: fixed;
+          top:0; left:0; width:100vw; height:100vh;
+          background: rgba(0,0,0,0.5);
+          display:none; justify-content:center; align-items:center; z-index:1001;
+      }
+      .modal-box {
+          background: #fff; padding: 30px; border-radius: 12px; width: 400px;
+      }
+      .modal-box input {
+          width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 6px; border: 1px solid #ccc;
+      }
+      .modal-actions {
+          display: flex; justify-content: flex-end; gap: 10px;
+      }
+  </style>
+</head>
+<body>
+  <div id="sidebar-container"></div>
+  <main class="content">
+    <div class="dashboard-card">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2>My Subjects</h2>
+          <button class="btn btn-primary" id="openAddModalBtn">Add Subject</button>
+      </div>
+      <div id="subjectsListContainer">
+         <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="subjectsTableBody">
+                <!-- Dynamically filled -->
+            </tbody>
+         </table>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal-overlay" id="subjectModal">
+      <div class="modal-box">
+          <h3 id="modalTitle">Add Subject</h3><br/>
+          <input type="hidden" id="subjectIdHidden" />
+          <input type="text" id="subjectNameInput" placeholder="Subject Name" required />
+          <input type="text" id="subjectDescInput" placeholder="Description" required />
+          <div class="modal-actions">
+              <button class="btn" id="closeModalBtn" style="background:#ccc;">Cancel</button>
+              <button class="btn btn-primary" id="saveSubjectBtn">Save</button>
+          </div>
+      </div>
+  </div>
+
+  <script type="module" src="/src/pages/tutor/subjects/index.js"></script>
+</body>
+</html>

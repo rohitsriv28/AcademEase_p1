@@ -1,0 +1,57 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && getUserData().role == 'admin';
+    }
+
+    function isTeacher() {
+      return isAuthenticated() && getUserData().role == 'teacher';
+    }
+
+    function isPendingTeacher() {
+      return isAuthenticated() && getUserData().role == 'approve_Teacher';
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // USERS COLLECTION
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId) || isAdmin();
+    }
+
+    // SUBJECTS COLLECTION
+    match /subjects/{subjectId} {
+      allow read: if isAuthenticated();
+
+      // Allowed if the authenticated user is the teacher owning the subject, or if they are admin
+      allow create: if isAuthenticated() && (request.auth.uid == request.resource.data.teacherId || isAdmin());
+
+      allow update, delete: if isAdmin() ||
+        (isTeacher() && request.auth.uid == resource.data.teacherId);
+    }
+
+    // BOOKINGS COLLECTION
+    match /bookings/{bookingId} {
+      allow read: if isAuthenticated();
+
+      allow create: if isAuthenticated();
+
+      allow update, delete: if isAdmin() ||
+        request.auth.uid == resource.data.studentId ||
+        request.auth.uid == resource.data.teacherId;
+    }
+  }
+}
