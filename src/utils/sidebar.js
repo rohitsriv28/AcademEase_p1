@@ -1,16 +1,16 @@
-import { logOut } from '../services/auth.js';
-import { ROLES } from './constants.js';
+import { logOut } from "../services/auth.js";
+import { ROLES } from "./constants.js";
 
 export function renderSidebar(userDocData) {
-    const container = document.getElementById("sidebar-container");
-    if (!container) return; // Silent bail
+  const container = document.getElementById("sidebar-container");
+  if (!container) return; // Silent bail
 
-    const role = userDocData.role;
-    const name = userDocData.name || userDocData.displayName || "User";
-    const email = userDocData.email || "";
+  const role = userDocData.role;
+  const name = userDocData.name || userDocData.displayName || "User";
+  const email = userDocData.email || "";
 
-    // Base Profile
-    let html = `
+  // Base Profile
+  let html = `
         <div class="side-nav">
             <div>
                 <div class="user">
@@ -22,16 +22,16 @@ export function renderSidebar(userDocData) {
                 </div>
                 <ul>
                     <li>
-                        <a href="/src/pages/${role === ROLES.ADMIN ? 'admin' : role === ROLES.TEACHER ? 'tutor' : 'student'}/dashboard/index.html">
+                        <a href="/src/pages/${role === ROLES.ADMIN ? "admin" : role === ROLES.TEACHER ? "tutor" : "student"}/dashboard/index.html">
                             <i class="fa-solid fa-house"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
     `;
 
-    // Role Specific Links
-    if (role === ROLES.ADMIN) {
-        html += `
+  // Role Specific Links
+  if (role === ROLES.ADMIN) {
+    html += `
             <li>
                 <a href="/src/pages/admin/approvals/index.html">
                     <i class="fa-solid fa-list-check"></i>
@@ -45,8 +45,8 @@ export function renderSidebar(userDocData) {
                 </a>
             </li>
         `;
-    } else if (role === ROLES.TEACHER) {
-        html += `
+  } else if (role === ROLES.TEACHER) {
+    html += `
             <li>
                 <a href="/src/pages/tutor/subjects/index.html">
                     <i class="fa-solid fa-book"></i>
@@ -60,8 +60,8 @@ export function renderSidebar(userDocData) {
                 </a>
             </li>
         `;
-    } else if (role === ROLES.STUDENT) {
-        html += `
+  } else if (role === ROLES.STUDENT) {
+    html += `
             <li>
                 <a href="/src/pages/student/tutor-list/index.html">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -75,10 +75,10 @@ export function renderSidebar(userDocData) {
                 </a>
             </li>
         `;
-    }
+  }
 
-    // Bottom Links
-    html += `
+  // Bottom Links
+  html += `
                 </ul>
             </div>
             <ul>
@@ -92,11 +92,10 @@ export function renderSidebar(userDocData) {
         </div>
     `;
 
-    container.innerHTML = html;
+  container.innerHTML = html;
 
-    // Attach Log out functionality
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-        logOut();
-    });
+  // Attach Log out functionality
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    logOut();
+  });
 }
-

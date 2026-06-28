@@ -1,85 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tutor Dashboard - AcademEase</title>
-  <link rel="stylesheet" href="/src/assets/css/dashboard.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-</head>
-<body>
-  <div id="sidebar-container"></div>
-  
-  <main class="content">
-    <!-- Welcome Header Card -->
-    <div class="welcome-section">
-      <h1 id="welcomeGreeting">Welcome back!</h1>
-      <p>Here is an overview of your subjects, active bookings, and scheduled student classes.</p>
-      <div class="welcome-date" id="currentDate">Loading date...</div>
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutor Dashboard - AcademEase</title>
+    <link rel="stylesheet" href="/src/assets/css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="sidebar-container"></div>
 
-    <!-- Stats Grid -->
-    <div class="stats-grid">
-      <div class="stats-card">
-        <div class="stats-info">
-          <h3>My Subjects</h3>
-          <p id="mySubjects">--</p>
-        </div>
-        <div class="stats-icon"><i class="fa-solid fa-book-open"></i></div>
+    <main class="content">
+      <!-- Welcome Header Card -->
+      <div class="welcome-section">
+        <h1 id="welcomeGreeting">Welcome back!</h1>
+        <p>
+          Here is an overview of your subjects, active bookings, and scheduled
+          student classes.
+        </p>
+        <div class="welcome-date" id="currentDate">Loading date...</div>
       </div>
-      
-      <div class="stats-card">
-        <div class="stats-info">
-          <h3>Total Bookings</h3>
-          <p id="totalBookings">--</p>
-        </div>
-        <div class="stats-icon"><i class="fa-solid fa-users"></i></div>
-      </div>
-      
-      <div class="stats-card">
-        <div class="stats-info">
-          <h3>Upcoming Classes</h3>
-          <p id="upcomingClasses">--</p>
-        </div>
-        <div class="stats-icon"><i class="fa-solid fa-clock"></i></div>
-      </div>
-      
-      <div class="stats-card">
-        <div class="stats-info">
-          <h3>Completed Classes</h3>
-          <p id="completedClasses">--</p>
-        </div>
-        <div class="stats-icon"><i class="fa-solid fa-circle-check"></i></div>
-      </div>
-    </div>
 
-    <!-- Teaching Schedule Table -->
-    <div class="dashboard-card" style="margin-top: 30px;">
-      <h2>Upcoming Teaching Schedule</h2>
-      <p style="margin-bottom: 20px; color: var(--text-secondary);">Your confirmed class sessions booked by students.</p>
-      
-      <div style="overflow-x: auto;">
-        <table>
-          <thead>
-            <tr>
-              <th>Student Name</th>
-              <th>Student Email</th>
-              <th>Subject</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="scheduleTableBody">
-            <tr>
-              <td colspan="6" style="text-align: center; color: var(--text-secondary);">Loading teaching schedule...</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </main>
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stats-card">
+          <div class="stats-info">
+            <h3>My Subjects</h3>
+            <p id="mySubjects">--</p>
+          </div>
+          <div class="stats-icon"><i class="fa-solid fa-book-open"></i></div>
+        </div>
 
-  <script type="module" src="/src/pages/tutor/dashboard/index.js"></script>
-</body>
+        <div class="stats-card">
+          <div class="stats-info">
+            <h3>Total Bookings</h3>
+            <p id="totalBookings">--</p>
+          </div>
+          <div class="stats-icon"><i class="fa-solid fa-users"></i></div>
+        </div>
+
+        <div class="stats-card">
+          <div class="stats-info">
+            <h3>Upcoming Classes</h3>
+            <p id="upcomingClasses">--</p>
+          </div>
+          <div class="stats-icon"><i class="fa-solid fa-clock"></i></div>
+        </div>
+
+        <div class="stats-card">
+          <div class="stats-info">
+            <h3>Completed Classes</h3>
+            <p id="completedClasses">--</p>
+          </div>
+          <div class="stats-icon"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+      </div>
+
+      <!-- Teaching Schedule Table -->
+      <div class="dashboard-card" style="margin-top: 30px">
+        <h2>Upcoming Teaching Schedule</h2>
+        <p style="margin-bottom: 20px; color: var(--text-secondary)">
+          Your confirmed class sessions booked by students.
+        </p>
+
+        <div style="overflow-x: auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Student Name</th>
+                <th>Student Email</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleTableBody">
+              <tr>
+                <td
+                  colspan="6"
+                  style="text-align: center; color: var(--text-secondary)"
+                >
+                  Loading teaching schedule...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="/src/pages/tutor/dashboard/index.js"></script>
+  </body>
 </html>

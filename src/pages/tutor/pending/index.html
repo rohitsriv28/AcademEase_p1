@@ -1,40 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Pending Approval</title>
-  <link rel="stylesheet" href="/src/assets/css/dashboard.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <style>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pending Approval</title>
+    <link rel="stylesheet" href="/src/assets/css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
       .pending-box {
-          max-width: 600px;
-          margin: 100px auto;
-          text-align: center;
-          background: #fff;
-          padding: 40px;
-          border-radius: 12px;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        max-width: 600px;
+        margin: 100px auto;
+        text-align: center;
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
       }
       .pending-box i {
-          font-size: 60px;
-          color: #ff9800;
-          margin-bottom: 20px;
+        font-size: 60px;
+        color: #ff9800;
+        margin-bottom: 20px;
       }
-  </style>
-</head>
-<body>
-  <div class="pending-box">
+    </style>
+  </head>
+  <body>
+    <div class="pending-box">
       <i class="fa-solid fa-clock"></i>
       <h2>Application Pending</h2>
-      <p style="margin-top:20px; color:#555;">Your application to teach at AcademEase is currently under review by our administration team. You will be granted access to the Tutor Dashboard once your account is fully verified. Thank you for your patience!</p>
-      
-      <button onclick="logOut()" class="btn btn-primary" style="margin-top: 30px;">Sign Out</button>
-  </div>
-  
-  <script type="module">
-      import { logOut } from '/src/services/auth.js';
+      <p style="margin-top: 20px; color: #555">
+        Your application to teach at AcademEase is currently under review by our
+        administration team. You will be granted access to the Tutor Dashboard
+        once your account is fully verified. Thank you for your patience!
+      </p>
+
+      <button
+        onclick="logOut()"
+        class="btn btn-primary"
+        style="margin-top: 30px"
+      >
+        Sign Out
+      </button>
+    </div>
+
+    <script type="module">
+      import { logOut } from "/src/services/auth.js";
       // Expose logOut to global scope for the inline onclick handler
       window.logOut = logOut;
-  </script>
-</body>
+    </script>
+  </body>
 </html>

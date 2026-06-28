@@ -1,81 +1,92 @@
-# AcademEase - Find Your Perfect Tutor
+# AcademEase - Find Your Perfect Tutor 🎓
 
-**AcademEase** is a web-based educational platform designed to connect students with experienced tutors. It streamlines the process of finding educators, booking classes, and managing academic schedules.
+**AcademEase** is a web-based educational platform designed to connect students with experienced, certified tutors. It streamlines the process of finding educators, booking classes, and managing schedules through dedicated dashboards.
 
-## 🚀 Features
+> [!NOTE]
+> The codebase has been fully refactored and updated to follow a clean, modular directory structure containing static ES6 modules and Firestore security integrations.
 
-### 🎓 Student Section
+---
 
-- **Find Tutors**: Browse a list of qualified tutors filtered by subject.
-- **Book Classes**: Schedule demo classes or regular sessions.
-- **Dashboard**: View enrolled classes and upcoming schedules.
-- **Profile**: Manage personal details.
+## 🚀 Features & Capabilities
 
-### 👨‍🏫 Tutor Section
+### 🎓 Student Dashboard
 
-- **Registration**: Sign up with professional details (degree, experience).
-- **Subject Management**: Add and manage subjects offered.
-- **Class Schedule**: View and manage upcoming classes with students.
-- **Profile**: Update professional information.
+- **Tutor Catalog**: Browse registered tutors, view degree/experience credentials, and filter by subjects.
+- **Dynamic Welcome & Metrics**: A personalized header greet with system calendar dates, displaying dynamic counts for booked, upcoming, completed, and cancelled classes.
+- **Upcoming Schedule Table**: Displays confirmed booked sessions containing tutor profile pictures, dates, and times.
 
-### 🛡️ Admin Section
+### 👨‍🏫 Tutor Dashboard
 
-- **Teacher Approval**: Review and approve/reject new teacher registrations.
-- **User Management**: View details and manage all users (Students and Teachers).
-- **Oversight**: Ensure platform quality and safety.
+- **Dormant Signup Flow**: Apply to teach by uploading credentials (highest degree, years of experience, and subjects) alongside a profile picture hosted via Cloudinary.
+- **Subject Management**: Dynamically list and add subjects taught. New subjects created by active tutors are pre-approved instantly.
+- **Upcoming Teaching Schedule**: Real-time listing of scheduled student bookings (student name, email, date, time, and class confirmed badge).
 
-## 🛠️ Technology Stack
+### 🛡️ Admin Dashboard
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6 Modules)
-- **Backend & Database**: Google Firebase (Firestore, Authentication, Storage)
-- **Styling**: Vanilla CSS, Bootstrap 5
+- **Tutor Approvals Manager**: Dedicated console screen to approve or reject pending teacher accounts.
+- **KPI Metrics Panel**: Counts total students, total teachers, total subjects, and pending approvals.
+- **Tutor & Student Directories**: Responsive, side-by-side lists of all active platform members for easy moderation.
 
-## 📁 Project Structure
+---
+
+## 📁 Modular Folder Structure
+
+The project has been reorganized into a component-focused, root-relative modular layout:
 
 ```
 AcademEase/
-├── Admin/              # Admin workflows (Approve, Delete, Details)
-├── Dashboard/          # User dashboards
-├── Login/              # Login pages
-├── Signup/             # Registration pages
-├── StudentSection/     # Student workflows (BookClass, MyClasses, TutorList)
-├── TutorSection/       # Tutor workflows (AddClass, ManageSubjects)
-├── common/             # Shared resources
-├── index.html          # Landing page
-└── README.md           # Project documentation
+├── index.html                  # Stunning Landing Page (CTAs, Features, Stats)
+├── 404.html                    # Glassmorphism Page Not Found fallback
+├── firestore.rules             # Database access and secure creation validation
+├── src/
+│   ├── assets/
+│   │   └── css/
+│   │       ├── dashboard.css   # Main layout, grids, KPI cards and tables styling
+│   │       └── landing.css     # Landing page aesthetics
+│   ├── config/
+│   │   └── firebase.js         # Firebase App, Auth, and Firestore initialization
+│   ├── services/
+│   │   ├── auth.js             # Client guards and role validation routing
+│   │   └── cloudinary.js       # Cloudinary secure image upload handler
+│   ├── utils/
+│   │   ├── constants.js        # Global enum mapping (Roles, Collections, Status)
+│   │   ├── helpers.js          # Shared modal overlay loaders and toasts
+│   │   ├── sidebar.js          # Dynamic role-based navigation sidebar
+│   │   └── validators.js       # Signup password matching helpers
+│   └── pages/                  # Modular pages (HTML, JS controllers, local CSS)
+│       ├── auth/               # Login and Signup card templates
+│       ├── admin/              # Dashboard, Approvals, and Teachers directories
+│       ├── student/            # Dashboard, My Classes, and Tutor List bookers
+│       └── tutor/              # Dashboard, Classes, Subjects list, and Pending waitlists
 ```
+
+---
+
+## 🛠️ Technology Stack
+
+- **Core Structure**: HTML5 and Vanilla CSS3 custom design tokens.
+- **Logic & Services**: Javascript (ES6 Modules) using standard fetch and APIs.
+- **Database & Security**: Google Firebase (Firestore, Authentication) and Cloudinary CDN for profile pictures.
+
+---
 
 ## ⚙️ Setup & Installation
 
-1.  **Clone the Repository**
+1. **Clone the Repository**
 
-    ```bash
-    git clone <repository-url>
-    cd AcademEase_project1.0
-    ```
+   ```bash
+   git clone https://github.com/rohitsriv28/AcademEase_p1.git
+   cd AcademEase_project1.0
+   ```
 
-2.  **Run Locally**
-    Since this is a static web application using Firebase, you can serve it using any static file server.
+2. **Run Locally**
+   Start a static file server in the project directory:
 
-    Using `http-server` (Node.js):
+   ```bash
+   npx serve -l 8000
+   ```
 
-    ```bash
-    npx http-server . -o
-    ```
+   Or use the VS Code **Live Server** extension. Open **[http://localhost:8000](http://localhost:8000)** in your web browser.
 
-    Or use the "Live Server" extension in VS Code.
-
-3.  **Firebase Configuration**
-    The project is currently configured to specific Firebase instances. Ensure you have the correct permissions if you plan to modify backend rules.
-
-## 📝 Usage
-
-1.  **Landing Page**: Start at `index.html`.
-2.  **Sign Up**: Create an account as a Student or Teacher.
-    - _Note: Teacher accounts require Admin approval before full access._
-3.  **Login**: Access your respective dashboard.
-4.  **Admin Access**: Log in with admin credentials to approve teachers.
-
-## 📄 License
-
-This project is for educational purposes. All rights reserved.
+3. **Database Security Rules**
+   To update your Firebase console security layout, copy and deploy [firestore.rules](file:///d:/Workspace/AcademEase_project1.0/firestore.rules) content directly into your Firebase Console Rules tab.

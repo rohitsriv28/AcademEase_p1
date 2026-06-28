@@ -1,45 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Tutor Bookings</title>
-  <link rel="stylesheet" href="/src/assets/css/dashboard.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-</head>
-<body>
-  <div id="sidebar-container"></div>
-  <main class="content">
-    <div class="dashboard-card">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tutor Bookings</title>
+    <link rel="stylesheet" href="/src/assets/css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="sidebar-container"></div>
+    <main class="content">
+      <div class="dashboard-card">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+          "
+        >
           <h2>My Scheduled Classes</h2>
-      </div>
+        </div>
 
-      <!-- Tab Filter System -->
-      <div class="tab-container">
-          <button class="tab-btn active" id="tabUpcoming">Upcoming Classes</button>
+        <!-- Tab Filter System -->
+        <div class="tab-container">
+          <button class="tab-btn active" id="tabUpcoming">
+            Upcoming Classes
+          </button>
           <button class="tab-btn" id="tabScheduled">All Scheduled</button>
           <button class="tab-btn" id="tabCompleted">Completed Classes</button>
-      </div>
+        </div>
 
-      <div id="classesListContainer">
-         <table>
+        <div id="classesListContainer">
+          <table>
             <thead>
-                <tr>
-                    <th>Student Name</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
+              <tr>
+                <th>Student Name</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
             </thead>
             <tbody id="classesTableBody">
-                <!-- Dynamically filled -->
+              <!-- Dynamically filled -->
             </tbody>
-         </table>
+          </table>
+        </div>
       </div>
-    </div>
-  </main>
-  <script type="module" src="/src/pages/tutor/classes/index.js"></script>
-</body>
+    </main>
+    <script type="module" src="/src/pages/tutor/classes/index.js"></script>
+  </body>
 </html>
